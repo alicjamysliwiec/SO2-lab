@@ -7,6 +7,7 @@ NO_PARAMETERS_WERE_GIVEN=27
 # Skrypt pobiera dwa argumenty - dwie ścieżki do katalogów
 DIRECTORY=${1}
 FILE=${2}
+DATE=$(date +"--iso-8601=seconds")
 
 #Jeżeli nie podamy parametrów -eu??
 if [[ $# -lt 2 ]]; then
@@ -19,7 +20,7 @@ if [[ ! -d ${FIRST_DIRECTORY} && ! -d ${SECOND_DIRECTORY} ]]; then
 fi
 
 FILES2REMOVE=$(find ${DIRECTORY} -xtype l)
-${FILE} > ${FILES2REMOVE}
+${DATE}${FILES2REMOVE} > ${FILE}
 
 find ${DIRECTORY} -xtype l -exec rm {} \;
 
